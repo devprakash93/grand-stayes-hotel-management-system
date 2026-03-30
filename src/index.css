@@ -1,0 +1,180 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 20% 98%;
+    --foreground: 0 0% 7%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 7%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 7%;
+
+    --primary: 0 0% 7%;
+    --primary-foreground: 210 20% 98%;
+
+    --secondary: 210 20% 96%;
+    --secondary-foreground: 0 0% 7%;
+
+    --muted: 210 20% 96%;
+    --muted-foreground: 215 16% 47%;
+
+    --accent: 40 45% 55%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --success: 142 64% 24%;
+    --success-foreground: 0 0% 100%;
+
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 40 45% 55%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 0 0% 7%;
+    --sidebar-primary: 40 45% 55%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 210 20% 96%;
+    --sidebar-accent-foreground: 0 0% 7%;
+    --sidebar-border: 214 32% 91%;
+    --sidebar-ring: 40 45% 55%;
+
+    --shadow-card: 0 10px 15px -3px rgba(0, 0, 0, 0.03), 0 4px 6px -4px rgba(0, 0, 0, 0.03);
+    --shadow-elevated: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+    --shadow-gold: 0 10px 30px -10px hsla(40, 45%, 55%, 0.3);
+  }
+
+  .dark {
+    --background: 0 0% 5%;
+    --foreground: 210 20% 96%;
+
+    --card: 0 0% 8%;
+    --card-foreground: 210 20% 96%;
+
+    --popover: 0 0% 8%;
+    --popover-foreground: 210 20% 96%;
+
+    --primary: 210 20% 96%;
+    --primary-foreground: 0 0% 7%;
+
+    --secondary: 0 0% 14%;
+    --secondary-foreground: 210 20% 96%;
+
+    --muted: 0 0% 14%;
+    --muted-foreground: 215 16% 65%;
+
+    --accent: 40 45% 55%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 98%;
+
+    --success: 142 64% 24%;
+    --success-foreground: 0 0% 100%;
+
+    --border: 0 0% 18%;
+    --input: 0 0% 18%;
+    --ring: 40 45% 55%;
+
+    --sidebar-background: 0 0% 6%;
+    --sidebar-foreground: 210 20% 96%;
+    --sidebar-primary: 40 45% 55%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 0 0% 14%;
+    --sidebar-accent-foreground: 210 20% 96%;
+    --sidebar-border: 0 0% 18%;
+    --sidebar-ring: 40 45% 55%;
+  }
+
+  .luxury {
+    --background: 20 20% 4%;
+    --foreground: 40 20% 95%;
+
+    --card: 20 20% 7%;
+    --card-foreground: 40 20% 95%;
+
+    --popover: 20 20% 7%;
+    --popover-foreground: 40 20% 95%;
+
+    --primary: 40 45% 55%;
+    --primary-foreground: 20 20% 4%;
+
+    --secondary: 20 20% 12%;
+    --secondary-foreground: 40 20% 95%;
+
+    --muted: 20 20% 12%;
+    --muted-foreground: 40 10% 60%;
+
+    --accent: 40 45% 55%;
+    --accent-foreground: 20 20% 4%;
+
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 20 20% 15%;
+    --input: 20 20% 15%;
+    --ring: 40 45% 55%;
+
+    --sidebar-background: 20 20% 5%;
+    --sidebar-foreground: 40 20% 95%;
+    --sidebar-primary: 40 45% 55%;
+    --sidebar-primary-foreground: 20 20% 4%;
+    --sidebar-accent: 20 20% 12%;
+    --sidebar-accent-foreground: 40 20% 95%;
+    --sidebar-border: 20 20% 15%;
+    --sidebar-ring: 40 45% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased transition-colors duration-500;
+  }
+  h1, h2, h3 {
+    @apply font-serif;
+  }
+}
+
+@layer components {
+  .card-sheet {
+    box-shadow: var(--shadow-card);
+    @apply bg-card rounded-xl;
+  }
+  .card-elevated {
+    box-shadow: var(--shadow-elevated);
+    @apply bg-card rounded-xl;
+  }
+  .glass-panel {
+    @apply bg-card/80 backdrop-blur-md border border-border/50 rounded-2xl;
+  }
+  .gold-gradient {
+    @apply bg-gradient-to-r from-accent to-[hsl(35,50%,65%)];
+  }
+  .text-gold {
+    @apply text-accent;
+  }
+}
+
+@layer utilities {
+  .transition-quart {
+    transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+}
+
+/* React Datepicker overrides */
+.react-datepicker-wrapper {
+  @apply w-full;
+}
+.react-datepicker__input-container input {
+  @apply w-full px-4 py-2.5 bg-background border border-input rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-ring;
+}
