@@ -52,19 +52,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         console.warn('AuthContext: Sync failed with 403. This usually indicates a token/ID mismatch between Supabase and Backend.');
       }
 
-      // EMERGENCY FALLBACK: If sync fails but this is our main dev account, grant access anyway
-      if (supabaseUser.email === 'u8294342@gmail.com') {
-        console.warn('AuthContext: Sync failed but granting EMERGENCY ADMIN access for', supabaseUser.email);
-        setRole('admin');
-        setDbUser({ 
-          email: supabaseUser.email, 
-          role: 'admin', 
-          name: 'Admin User (Emergency Access)' 
-        });
-      } else {
-        setRole('guest');
-        setDbUser(null);
-      }
+      // Fallback: assign guest role if sync fails
+      setRole('guest');
+      setDbUser(null);
     }
   }, []);
 
