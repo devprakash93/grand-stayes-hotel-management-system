@@ -77,4 +77,4 @@ The application will be available at **http://localhost:5173**.
 - **Typography**: Professional font pairings (Inter & Serif headers).
 
 ---
-
+ made by dev prakash sahoo
