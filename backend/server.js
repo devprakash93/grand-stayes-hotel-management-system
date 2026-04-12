@@ -34,7 +34,7 @@ app.get('/api', (req, res) => res.json({ message: 'Grand Stays API is running' }
 app.use(express.static(path.join(__dirname, '../dist')));
 
 // Catch-all route to serve React app for non-API routes
-app.get('*', (req, res) => {
+app.get(/.*/, (req, res) => {
   res.sendFile(path.join(__dirname, '../dist/index.html'));
 });
 
