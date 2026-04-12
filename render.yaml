@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: grand-stays
+    env: node
+    buildCommand: npm install && npm run build && cd backend && npm install
+    startCommand: cd backend && node server.js
+    envVars:
+      - key: PORT
+        value: 5000
+      - key: NODE_ENV
+        value: production
+      # Note: Make sure to add your database connection string and any other required variables (like JWT secrets) in the Render dashboard

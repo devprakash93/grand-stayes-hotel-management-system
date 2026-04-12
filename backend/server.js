@@ -25,9 +25,18 @@ app.use('/api/staff', require('./routes/staffRoutes'));
 app.use('/api/notifications', require('./routes/notificationRoutes'));
 app.use('/api/audit', require('./routes/auditRoutes'));
 
-// Root and Base API route
-app.get('/', (req, res) => res.json({ message: 'Grand Stays backend is running' }));
+const path = require('path');
+
+// Root and Base API route (keeping the base API route for health check)
 app.get('/api', (req, res) => res.json({ message: 'Grand Stays API is running' }));
+
+// Serve static frontend in production or if dist exists
+app.use(express.static(path.join(__dirname, '../dist')));
+
+// Catch-all route to serve React app for non-API routes
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../dist/index.html'));
+});
 
 // Global Error Handler
 app.use(errorHandler);
